@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}ورود{% endblock %}
+
+{% block content %}
+    <h2>ورود به سیستم</h2>
+    <form method="POST" class="card p-3">
+        {% csrf_token %}
+        <label>نام کاربری:</label>
+        <input type="text" name="username" class="form-control" required>
+        
+        <label>رمز عبور:</label>
+        <input type="password" name="password" class="form-control" required>
+        
+        <button type="submit" class="btn btn-primary mt-3">ورود</button>
+    </form>
+{% endblock %}

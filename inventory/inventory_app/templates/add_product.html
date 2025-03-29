@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}افزودن محصول{% endblock %}
+
+{% block content %}
+    <h2>افزودن محصول جدید</h2>
+    <form method="POST" class="card p-3">
+        {% csrf_token %}
+        <label>نام محصول:</label>
+        <input type="text" name="name" class="form-control" required>
+        
+        <label>دسته‌بندی:</label>
+        <select name="category" class="form-control">
+            {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <label>موجودی:</label>
+        <input type="number" name="quantity" class="form-control" required>
+        
+        <button type="submit" class="btn btn-primary mt-3">افزودن</button>
+    </form>
+{% endblock %}

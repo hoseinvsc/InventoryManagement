@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}ویرایش محصول{% endblock %}
+
+{% block content %}
+    <h2>ویرایش محصول</h2>
+    <form method="POST" class="card p-3">
+        {% csrf_token %}
+        <label>نام محصول:</label>
+        <input type="text" name="name" value="{{ product.name }}" class="form-control" required>
+        
+        <label>دسته‌بندی:</label>
+        <select name="category" class="form-control">
+            {% for category in categories %}
+            <option value="{{ category.id }}" {% if category.id == product.category.id %}selected{% endif %}>
+                {{ category.name }}
+            </option>
+            {% endfor %}
+        </select>
+        
+        <label>موجودی:</label>
+        <input type="number" name="quantity" value="{{ product.quantity }}" class="form-control" required>
+
+        <button type="submit" class="btn btn-success mt-3">ذخیره تغییرات</button>
+    </form>
+{% endblock %}
